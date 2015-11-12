@@ -12,7 +12,7 @@ var config = {
     app: {
       name: 'realtimeexercice'
     },
-    port: 3000,
+    port: port,
   },
 
   test: {
@@ -20,7 +20,7 @@ var config = {
     app: {
       name: 'realtimeexercice'
     },
-    port: 3000,
+    port: port,
   },
 
   production: {
@@ -28,7 +28,7 @@ var config = {
     app: {
       name: 'realtimeexercice'
     },
-    port: 3000,
+    port: port,
   }
 };
 
