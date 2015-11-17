@@ -1,0 +1,4 @@
+.jumbotron
+  h2 Here is how you and other people feel...
+  div(ng-controller='GraphController')
+    canvas(id="pie",class="chart chart-pie",chart-data="data[0]",chart-labels="labels",chart-legend="true")
