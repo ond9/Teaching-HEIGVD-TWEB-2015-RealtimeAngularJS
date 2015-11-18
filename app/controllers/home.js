@@ -1,3 +1,4 @@
+
 var express = require('express'),
   router = express.Router(),
   Article = require('../models/article');
@@ -12,9 +13,7 @@ router.get('/template/:name.html', function(req, res) {
 })
 
 router.get('/', function (req, res, next) {
-  var articles = [new Article(), new Article()];
     res.render('index', {
-      title: 'Generator-Express MVC',
-      articles: articles
+      title: 'MyFirstAngularJSRealtimeCharts',
     });
 });

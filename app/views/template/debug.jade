@@ -1,32 +1,33 @@
 .jumbotron
   h2 Are you happy ?
   form.form-inline
-    .row
-      .col-md-4
-        button.btn.btn-primary.btn-lg.btn-block(type='button') Yes
-      .col-md-4
-        button.btn.btn-primary.btn-lg.btn-block(type='button') No
-      .col-md-4
-        button.btn.btn-primary.btn-lg.btn-block(type='button') I don&apos;t know
-    .row
-      br
-    .row
-      .col-md-12
-        button.btn.btn-danger.btn-lg.btn-block(type='button') Reset
-    .row
-       .col-md-12
-          h2 Here is how you and other people feel...
-    .row
-       .col-md-6
-          div(ng-controller='GraphController')
-            canvas(id="pie",class="chart chart-pie",chart-data="data[0]",chart-labels="labels", chart-series="series", chart-legend="true")
-       .col-md-6
-          div(ng-controller='GraphController')
-            canvas(id="bar",class="chart chart-bar",chart-data="data",chart-labels="labels", chart-series="series", chart-legend="true")
-    .row
-       .col-md-6
-          div(ng-controller='GraphController')
-            canvas(id="doughnut",class="chart chart-doughnut",chart-data="data[0]",chart-labels="labels",chart-legend="true")
-       .col-md-6
-          div(ng-controller='GraphController')
-            canvas(id="line",class="chart chart-line",chart-data="data",chart-labels="labels", chart-series="series", chart-legend="true")
+    div(ng-controller='ClickController')
+      .row
+        .col-md-4
+          button.btn.btn-primary.btn-lg.btn-block(type='button', ng-click='clickYes()') Yes
+        .col-md-4
+          button.btn.btn-primary.btn-lg.btn-block(type='button', ng-click='clickNo()') No
+        .col-md-4
+          button.btn.btn-primary.btn-lg.btn-block(type='button', ng-click='clickIdk()') I don&apos;t know
+      .row
+        br
+      .row
+        .col-md-12
+          button.btn.btn-danger.btn-lg.btn-block(type='button', ng-click='clickReset()') Reset
+      .row
+         .col-md-12
+            h2 Here is how you and other people feel...
+      .row
+         .col-md-6
+            div(ng-controller='DataController')
+              canvas(id="pie",class="chart chart-pie",chart-data="data[0]",chart-labels="labels" chart-legend="true")
+         .col-md-6
+            div(ng-controller='DataController')
+              canvas(id="bar",class="chart chart-bar",chart-data="data",chart-labels="labels", chart-series="series", chart-legend="true")
+      .row
+         .col-md-6
+            div(ng-controller='DataController')
+              canvas(id="doughnut",class="chart chart-doughnut",chart-data="data[0]",chart-labels="labels",chart-legend="true")
+         .col-md-6
+            div(ng-controller='DataController')
+              canvas(id="line",class="chart chart-line",chart-data="data",chart-labels="labels", chart-legend="true")

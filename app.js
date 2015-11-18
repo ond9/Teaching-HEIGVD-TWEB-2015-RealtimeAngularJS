@@ -5,9 +5,50 @@ var express = require('express'),
 
 var app = express();
 
+
+
+
 require('./config/express')(app, config);
 
-app.listen(config.port, function () {
+var server = app.listen(config.port, function () {
   console.log('Express server listening on port ' + config.port);
 });
+
+var io = require('socket.io')(server);
+	var stats = {};
+	stats.yes = 0;
+	stats.no = 0;
+	stats.idk = 0;
+	
+io.on('connection', function(socket){ 
+	console.log('new client connected !!!!!!!!!!!!!!!!!!!');
+	
+
+	
+	
+	socket.on('message', function(message) {
+		if(message == 'yes')
+			stats.yes++;
+		else if(message == 'no')
+			stats.no++;
+		else if(message == 'idk')
+			stats.idk++;
+		else if(message == 'reset'){
+			stats.yes = 0;
+			stats.no = 0;
+			stats.idk = 0;
+		}
+		
+		console.log(stats);
+		
+		socket.broadcast.emit('votes', stats);
+		socket.emit('votes', stats);
+		
+	});
+	
+	
+});
+
+
+
 

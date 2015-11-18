@@ -1,27 +1,59 @@
 (function() {
 	
-	
-	
-	 var module = angular.module('myApp', ['chart.js', 'ui.router'])
+	 var module = angular.module('myApp', ['chart.js', 'btford.socket-io', 'ui.router']);
 	 
-	 module.factory('votesData', function() {
-		  var fakeData = {
-				labels:["Yes","No","I don't know"],
-				series:["Yes","No","I don't know"],
-				data:[
-					[65, 59, 80, 81, 56, 55, 40],
-					[28, 48, 40, 19, 86, 27, 90]
-				]
-		  };
-		  
-		  return fakeData;
-	 });
-	
-	module.controller('GraphController', function($scope, votesData) {
-		$scope.labels = votesData.labels;
-		$scope.data = votesData.data;
-		$scope.series = votesData.series;
+	 module.factory('mySocket', function(socketFactory) {
+		return socketFactory();
 	});
+	 
+	module.factory('votesData', function(mySocket) {
+		  
+		  var votes = [[10,10,10]];
+		  
+		  mySocket.on('votes', function(data) {
+			  votes[0][0] = data.yes;
+			  votes[0][1] = data.no;
+			  votes[0][2] = data.idk;
+			  
+			  console.log(votes);
+		  });
+		  
+		  return {
+				 labels:["Yes","No","I don't know"],
+				 data:votes        
+			};
+	  });
+	  
+	  module.controller('DataController', function($scope, votesData) {
+		$scope.labels = votesData.labels;
+      $scope.data = votesData.data;
+	  });
+	
+	module.controller('ClickController', function($scope, mySocket) {
+		$scope.clickYes = function() {
+				console.log(mySocket);
+				mySocket.emit('message', 'yes');
+				console.log("yes");
+			}
+			$scope.clickNo = function() {
+				console.log(mySocket);
+				mySocket.emit('message', 'no');
+				console.log("no");
+			}
+			$scope.clickIdk = function() {
+				console.log(mySocket);
+				mySocket.emit('message', 'idk');
+				console.log("idk");
+			}
+			
+			$scope.clickReset = function() {
+				console.log(mySocket);
+				mySocket.emit('message', 'reset');
+				console.log("idk");
+			}
+			
+	});
+	
 	
 	
 	module.config(function( $stateProvider, $urlRouterProvider, $locationProvider ) {

@@ -2,10 +2,11 @@
   h2 Are you happy ?
   form.form-inline
     .row
-      .col-md-4
-        button.btn.btn-primary.btn-lg.btn-block(type='button') Yes
-      .col-md-4
-        button.btn.btn-primary.btn-lg.btn-block(type='button') No
-      .col-md-4
-        button.btn.btn-primary.btn-lg.btn-block(type='button') I don&apos;t know
+      div(ng-controller='ClickController')
+        .col-md-4.test
+          button.btn.btn-primary.btn-lg.btn-block(type='button', ng-click='clickYes()') Yes
+        .col-md-4
+          button.btn.btn-primary.btn-lg.btn-block(type='button', ng-click='clickNo()') No
+        .col-md-4
+          button.btn.btn-primary.btn-lg.btn-block(type='button', ng-click='clickIdk()') I don&apos;t know
     
