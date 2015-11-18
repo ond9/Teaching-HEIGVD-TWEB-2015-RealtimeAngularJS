@@ -14,7 +14,8 @@
     "compression": "^1.5.2",
     "method-override": "^2.3.0",
     "glob": "^5.0.3",
-    "jade": "^1.11.0"
+    "jade": "^1.11.0",
+    "socket.io": "0.9.1-1"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
