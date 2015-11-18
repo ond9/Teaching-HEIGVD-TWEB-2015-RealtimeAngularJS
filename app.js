@@ -17,7 +17,7 @@ var server = app.listen(config.port, function () {
 //var io = require('socket.io')(server);
 
 var moduleIO = require('socket.io');
-var io = new Server(server);
+var io = new moduleIO(server);
 
 	var stats = {};
 	stats.yes = 0;
