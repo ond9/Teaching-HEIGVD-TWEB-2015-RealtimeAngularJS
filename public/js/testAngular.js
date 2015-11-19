@@ -56,6 +56,11 @@
 			
 	});
 	
+	module.controller('ActiveController', function($scope, $location) {	  
+	  $scope.isActive = function(viewLocation) {
+		  return viewLocation === $location.path();
+	  };
+	});
 	
 	
 	module.config(function( $stateProvider, $urlRouterProvider, $locationProvider ) {
@@ -90,6 +95,7 @@
 		
 	});
 	
+	/*  Debug purpose
 	module.run(function($rootScope) {
 		console.log('test');
 			$rootScope.$on('$stateChnageStart', function() {
@@ -99,6 +105,6 @@
 					console.log('state error');
 				});
 
-		});
+	});*/
 	
 })();

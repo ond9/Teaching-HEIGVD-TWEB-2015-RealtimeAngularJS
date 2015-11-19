@@ -1,4 +1,4 @@
-nav.navbar.navbar-default
+nav.navbar.navbar-default(ng-app='myApp',ng-controller='ActiveController')
   .container-fluid
     .navbar-header
        button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
@@ -9,9 +9,9 @@ nav.navbar.navbar-default
        a.navbar-brand(href='/')= title
      #navbar.navbar-collapse.collapse
        ul.nav.navbar-nav
-         li.active
+         li(ng-class="{active: isActive('/audience')}")
            a(href='/audience') Audience
-         li
+         li(ng-class="{active: isActive('/board')}")
            a(href='/board') Board
-         li
+         li(ng-class="{active: isActive('/debug')}")
            a(href='/debug') Debug
