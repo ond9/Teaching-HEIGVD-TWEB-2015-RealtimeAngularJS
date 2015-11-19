@@ -20,6 +20,7 @@
 		  
 		  return {
 				 labels:["Yes","No","I don't know"],
+				 colors:['#46bfbd','#f7464a', '#DCDCDC'],
 				 data:votes        
 			};
 	  });
@@ -27,6 +28,7 @@
 	  module.controller('DataController', function($scope, votesData) {
 		$scope.labels = votesData.labels;
       $scope.data = votesData.data;
+		$scope.colors = votesData.colors;
 	  });
 	
 	module.controller('ClickController', function($scope, mySocket) {
