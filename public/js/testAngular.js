@@ -8,7 +8,7 @@
 	 
 	module.factory('votesData', function(mySocket) {
 		  
-		  var votes = [[10,10,10]];
+		  var votes = [[0,0,0]];
 		  
 		  mySocket.on('votes', function(data) {
 			  votes[0][0] = data.yes;

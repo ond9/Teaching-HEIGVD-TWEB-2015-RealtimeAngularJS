@@ -24,10 +24,9 @@ var io = require('socket.io')(server);
 	
 io.on('connection', function(socket){ 
 	console.log('new client connected !!!!!!!!!!!!!!!!!!!');
-	
+	// once he's connected we send current info no votes (click) needed to be updated
+	socket.emit('votes', stats);
 
-	
-	
 	socket.on('message', function(message) {
 		if(message == 'yes')
 			stats.yes++;
@@ -43,6 +42,7 @@ io.on('connection', function(socket){
 		
 		console.log(stats);
 		
+		// send back to all client after votes from clients
 		socket.broadcast.emit('votes', stats);
 		socket.emit('votes', stats);
 		
