@@ -22,6 +22,8 @@ router.get('/', function (req, res, next) {
     });
 });
 
+// because of html 5 mode refresh certain page don't load index and fail 
+
 router.get('*', function(req, res){
     res.render('index');
 });
